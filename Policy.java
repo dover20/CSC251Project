@@ -1,14 +1,16 @@
+// Create Policy class with public access specifier
 public class Policy
 {
-    private String policyNumber; 
-    private String providerName;
-    private String firstName;
-    private String lastName;
-    private String smokerStatus;
-    private int age;
-    private double height, weight;
+    // Initialize variables
+    String policyNumber; 
+    String providerName;
+    String firstName;
+    String lastName;
+    String smokerStatus;
+    int age;
+    double height, weight;
     
-    // No-arg constructor
+    // No-arg constructor for Policy class
     public Policy()
     {
         this.policyNumber = "";
@@ -22,7 +24,8 @@ public class Policy
     }
     
     // Constructor with arguments
-    public Policy(String policyNumber, String providerName, String firstName, String lastName, String smokerStatus, int age, double height, double weight)
+    public Policy(String policyNumber, String providerName, String firstName, String lastName, 
+                  String smokerStatus, int age, double height, double weight)
     {
         this.policyNumber = policyNumber;
         this.providerName = providerName;
@@ -41,6 +44,7 @@ public class Policy
     }
     
     // Method for calculating policy price
+    // Takes Policyholder's BMI as input
     public double calcPolicyPrice(double BMI)
     {
         double insPrice = 0.00;
@@ -66,25 +70,7 @@ public class Policy
             insPrice += (BMI - 35) * 20;
         }
         
+        // return the final insurance policy price
         return insPrice;
-    }
-    
-    public static void main(String[] args)
-    {
-        Policy myPolicy = new Policy("1234","State Farm", "John", "Doe", "non-smoker", 24, 62, 250.5);
-        
-        System.out.println("Policy Number: " + myPolicy.policyNumber);
-        System.out.println("Provider Name: " + myPolicy.providerName);
-        System.out.println("Policyholder's First Name: " + myPolicy.firstName);
-        System.out.println("Policyholder's Last Name: " + myPolicy.lastName);
-        System.out.println("Policyholder's Age: " + myPolicy.age);
-        System.out.println("Policyholder's Smoking Status: " + myPolicy.smokerStatus);
-        System.out.println("Policyholder's Height: " + myPolicy.height);
-        System.out.println("Policyholder's Weight: " + myPolicy.weight);
-        System.out.printf("Policyholder's BMI: %.2f", myPolicy.calcBMI() );
-        System.out.printf("\nPolicy Price: $%.2f", myPolicy.calcPolicyPrice(myPolicy.calcBMI()) );
-        
-        //System.out.println(myPolicy.calcBMI());
-        //System.out.println( myPolicy.calcPolicyPrice(myPolicy.calcBMI()) );
     }
 }
