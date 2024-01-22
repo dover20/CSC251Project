@@ -40,10 +40,51 @@ public class Policy
         return ( (weight * 703) / (height * height) );
     }
     
+    // Method for calculating policy price
+    public double calcPolicyPrice(double BMI)
+    {
+        double insPrice = 0.00;
+        
+        // base insurance fee
+        insPrice += 600.00;
+        
+        // if policyholder is over 50, there is an additional fee
+        if(age > 50)
+        {
+            insPrice += 75.00;
+        }
+        
+        // if policyholder is a smoker, add an additional $100 fee
+        if(smokerStatus.equals("smoker") || smokerStatus.equals("Smoker"))
+        {
+            insPrice += 100.00;
+        }
+        
+        // if BMI is over 35 add additional fee
+        if(BMI > 35)
+        {
+            insPrice += (BMI - 35) * 20;
+        }
+        
+        return insPrice;
+    }
+    
     public static void main(String[] args)
     {
-        Policy myPolicy = new Policy("ten","state farm", "dylan", "smith", "no", 32, 100, 50);
-        System.out.println(myPolicy.lastName);
-        System.out.println(myPolicy.calcBMI());
+        Policy myPolicy = new Policy("1234","State Farm", "John", "Doe", "non-smoker", 24, 62, 250.5);
+        
+        System.out.println("Policy Number: " + myPolicy.policyNumber);
+        System.out.println("Provider Name: " + myPolicy.providerName);
+        System.out.println("Policyholder's First Name: " + myPolicy.firstName);
+        System.out.println("Policyholder's Last Name: " + myPolicy.lastName);
+        System.out.println("Policyholder's Age: " + myPolicy.age);
+        System.out.println("Policyholder's Smoking Status: " + myPolicy.smokerStatus);
+        System.out.println("Policyholder's Height: " + myPolicy.height);
+        System.out.println("Policyholder's Weight: " + myPolicy.weight);
+        System.out.printf("Policyholder's BMI: %.2f", myPolicy.calcBMI() );
+        System.out.printf("\nPolicy Price: $%.2f", myPolicy.calcPolicyPrice(myPolicy.calcBMI()) );
+        
+        //System.out.println(myPolicy.calcBMI());
+        //System.out.println( myPolicy.calcPolicyPrice(myPolicy.calcBMI()) );
     }
 }
