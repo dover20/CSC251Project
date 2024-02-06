@@ -1,7 +1,8 @@
 import java.util.Scanner;
+import java.io.*;
 
 public class Project_dylan_overlin {
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
         // initialize variables for user input
         String usersPolicyNumber = "";
@@ -12,36 +13,37 @@ public class Project_dylan_overlin {
         int usersAge;
         double usersHeight, usersWeight;
         
-        // open a scanner named "keyboard" for user input
-        Scanner keyboard = new Scanner(System.in);
+        // open a scanner named "fileInput" for input from a file
+        File file = new File("PolicyInformation.txt");
+        Scanner fileInput = new Scanner(file);
         
         // ask user for their policy information
         System.out.print("What is your policy number? ");
-        usersPolicyNumber = keyboard.nextLine();
+        usersPolicyNumber = fileInput.nextLine();
         
         System.out.print("What is your Policy Providers Name? ");
-        usersProvidersName = keyboard.nextLine();
+        usersProvidersName = fileInput.nextLine();
         
         System.out.print("What is your First Name? ");
-        usersFirstName = keyboard.nextLine();     
+        usersFirstName = fileInput.nextLine();     
         
         System.out.print("What is your Last Name? ");
-        usersLastName = keyboard.nextLine();
+        usersLastName = fileInput.nextLine();
         
         System.out.print("What is your Age? ");
-        usersAge = keyboard.nextInt();
+        usersAge = fileInput.nextInt();
         
         // move scanner to next line to prevent empty scanner input after reading integer
-        keyboard.nextLine();
+        fileInput.nextLine();
         
         System.out.print("What is your Smoking Status? (smoker/non-smoker) ");
-        usersSmokingStatus = keyboard.nextLine();  
+        usersSmokingStatus = fileInput.nextLine();  
         
         System.out.print("What is your Height? (in inches) ");
-        usersHeight = keyboard.nextDouble();
+        usersHeight = fileInput.nextDouble();
         
         System.out.print("What is your Weight? (in pounds) ");
-        usersWeight = keyboard.nextDouble();
+        usersWeight = fileInput.nextDouble();
             
         // policy constructor that accepts the above variables as arguments
         Policy myPolicy = new Policy(usersPolicyNumber, usersProvidersName, usersFirstName, usersLastName, 
@@ -61,6 +63,6 @@ public class Project_dylan_overlin {
         System.out.printf("\nPolicy Price: $%.2f", myPolicy.calcPolicyPrice(myPolicy.calcBMI()) );
         
         // close the scanner
-        keyboard.close();
+        fileInput.close();
     }
 }
