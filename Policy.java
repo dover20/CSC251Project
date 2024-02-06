@@ -37,15 +37,21 @@ public class Policy
         this.weight = weight;
     }
     
-    // Method for calculating Policyholder's BMI
+    /**
+      Method for calculating Policyholder's BMI
+    */
     public double calcBMI()
     {
         return ( (weight * 703) / (height * height) );
     }
     
-    // Method for calculating policy price
-    // Takes Policyholder's BMI as input
+    /**
+       Method for calculating policy price
+       
+       @param BMI Policyholder's BMI as input
+    */
     public double calcPolicyPrice(double BMI)
+    
     {
         double insPrice = 0.00;
         
