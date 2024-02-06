@@ -11,6 +11,8 @@ public class Project_dylan_overlin {
         String usersLastName = "";
         String usersSmokingStatus = "";
         String usersAge, usersHeight, usersWeight, usersPolicyNumber;
+        int smokers = 0;
+        int nonsmokers = 0;
         
         // open a scanner named "fileInput" for input from a file
         File file = new File("PolicyInformation.txt");
@@ -44,6 +46,13 @@ public class Project_dylan_overlin {
            int newUsersHeight = Integer.parseInt(usersHeight);
            int newUsersWeight = Integer.parseInt(usersWeight);
            int newUsersAge = Integer.parseInt(usersAge);
+           
+           if(usersSmokingStatus.equals("smoker"))
+           {
+               smokers = smokers + 1;
+           } else {
+               nonsmokers = nonsmokers + 1;
+           }
 
            // policy constructor that accepts the above variables as arguments
            Policy myPolicy = new Policy(newPolicyNum, usersProvidersName, usersFirstName, usersLastName, 
@@ -70,6 +79,11 @@ public class Project_dylan_overlin {
            System.out.printf("Policyholder's BMI: %.2f", myPolicy.calcBMI() );
            System.out.printf("\nPolicy Price: $%.2f", myPolicy.calcPolicyPrice(myPolicy.calcBMI()) );
         } 
+        
+        // Print smoking data
+        System.out.println("\n");
+        System.out.println("The number of policies with a smoker is: " + smokers);
+        System.out.println("The number of policies with a non-smoker is: " + nonsmokers);
 
         // close the scanner
         fileInput.close();
