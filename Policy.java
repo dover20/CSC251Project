@@ -2,30 +2,29 @@
 public class Policy
 {
     // Initialize variables
-    String policyNumber; 
+    //String policyNumber; 
     String providerName;
     String firstName;
     String lastName;
     String smokerStatus;
-    int age;
-    double height, weight;
+    int policyNumber, age, height, weight;
     
     // No-arg constructor for Policy class
     public Policy()
     {
-        this.policyNumber = "";
+        this.policyNumber = 0;
         this.providerName = "";
         this.firstName = "";
         this.lastName = "";
         this.smokerStatus = "";
         this.age = 0;
-        this.height = 0.0;
-        this.weight = 0.0;
+        this.height = 0;
+        this.weight = 0;
     }
     
     // Constructor with arguments
-    public Policy(String policyNumber, String providerName, String firstName, String lastName, 
-                  String smokerStatus, int age, double height, double weight)
+    public Policy(int policyNumber, String providerName, String firstName, String lastName, 
+                  String smokerStatus, int age, int height, int weight)
     {
         this.policyNumber = policyNumber;
         this.providerName = providerName;
@@ -79,4 +78,20 @@ public class Policy
         // return the final insurance policy price
         return insPrice;
     }
+    
+    /*public void printOutput()
+    {
+        // output policyholder's information with formatting
+        System.out.println("");
+        System.out.println("Policy Number: " + policyNumber);
+        System.out.println("Provider Name: " + providerName);
+        System.out.println("Policyholder's First Name: " + firstName);
+        System.out.println("Policyholder's Last Name: " + lastName);
+        System.out.println("Policyholder's Age: " + age);
+        System.out.println("Policyholder's Smoking Status: " + smokerStatus);
+        System.out.println("Policyholder's Height: " + height);
+        System.out.println("Policyholder's Weight: " + weight);
+        System.out.printf("Policyholder's BMI: %.2f", calcBMI() );
+        System.out.printf("\nPolicy Price: $%.2f", calcPolicyPrice(calcBMI()) );    
+    }*/
 }
