@@ -6,13 +6,18 @@ public class Policy {
     String lastName;
     String smokerStatus;
     int policyNumber;
-
     int age;
     int height;
     int weight;
+    
+    // Static field to keep track of the number of Policy objects created
+    public static int numberOfPoliciesCreated = 0;
 
     // No-arg constructor for Policy class
     public Policy() {
+        // Increment the static field when a new Policy object is created
+        numberOfPoliciesCreated++;
+        
         this.policyNumber = 0;
         this.providerName = "";
         this.firstName = "";
