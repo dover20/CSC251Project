@@ -29,7 +29,7 @@ public class PolicyHolder {
    // Method to display information for each policy associated with the policy holder
    public void displayPolicies() {
        // Display personal information for the policy holder
-       System.out.println("Policyholder's First Name: " + firstName);
+       System.out.println("\nPolicyholder's First Name: " + firstName);
        System.out.println("Policyholder's Last Name: " + lastName);
        System.out.println("Policyholder's Age: " + age);
        System.out.println("Policyholder's Smoking Status: " + smokingStatus);
@@ -38,10 +38,11 @@ public class PolicyHolder {
 
        // Loop through policies and display information for each policy
        for (Policy policy : policyList) {
-           System.out.println("\nPolicy Number: " + policy.policyNumber);
+           System.out.println("Policy Number: " + policy.policyNumber);
            System.out.println("Provider Name: " + policy.providerName);
            System.out.printf("Policyholder's BMI: %.2f", policy.calcBMI());
            System.out.printf("\nPolicy Price: $%.2f", policy.calcPolicyPrice(policy.calcBMI()));
+           System.out.println("");
       }
    }
 }
