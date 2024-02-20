@@ -19,65 +19,47 @@ public class Project_dylan_overlin {
         // Create ArrayList for Policy Objects
         ArrayList<Policy> policyList = new ArrayList<>();
         
+        // Create ArrayList for PolicyHolder Objects
+        ArrayList<PolicyHolder> policyHolderList = new ArrayList<>();
+        
         // loop until file ends
-        while(fileInput.hasNext()) {
-        
-          // retrieve policy information from file
-           usersPolicyNumber =  fileInput.nextLine();
-                      
-           usersProvidersName = fileInput.nextLine();
-           
-           usersFirstName = fileInput.nextLine();     
-        
-           usersLastName = fileInput.nextLine();
-           
-           usersAge = fileInput.nextLine();
-           
-           usersSmokingStatus = fileInput.nextLine();  
-           
-           usersHeight = fileInput.nextLine();
-           
-           usersWeight = fileInput.nextLine();
-           
-           // Convert Strings to Integers           
-           int newPolicyNum = Integer.parseInt(usersPolicyNumber);
-           int newUsersHeight = Integer.parseInt(usersHeight);
-           int newUsersWeight = Integer.parseInt(usersWeight);
-           int newUsersAge = Integer.parseInt(usersAge);
-           
-           // Keep track of smokers and non-smokers
-           if(usersSmokingStatus.equals("smoker"))
-           {
-               smokers = smokers + 1;
-           } else {
-               nonsmokers = nonsmokers + 1;
-           }
+        while (fileInput.hasNext()) {
+            // retrieve policy information from file
+            usersPolicyNumber = fileInput.nextLine();
+            usersProvidersName = fileInput.nextLine();
+            usersFirstName = fileInput.nextLine();
+            usersLastName = fileInput.nextLine();
+            usersAge = fileInput.nextLine();
+            usersSmokingStatus = fileInput.nextLine();
+            usersHeight = fileInput.nextLine();
+            usersWeight = fileInput.nextLine();
 
-           // policy constructor that accepts the above variables as arguments
-           Policy myPolicy = new Policy(newPolicyNum, usersProvidersName, usersFirstName, usersLastName, 
-                                       usersSmokingStatus, newUsersAge, newUsersHeight, newUsersWeight);
-           
-           // Add current policy object to ArrayList                        
-           policyList.add(myPolicy);
-                                                  
+            // Convert Strings to Integers
+            int newPolicyNum = Integer.parseInt(usersPolicyNumber);
+            int newUsersHeight = Integer.parseInt(usersHeight);
+            int newUsersWeight = Integer.parseInt(usersWeight);
+            int newUsersAge = Integer.parseInt(usersAge);
+
+            // Create a new PolicyHolder
+            PolicyHolder policyHolder = new PolicyHolder(usersFirstName, usersLastName, usersSmokingStatus,
+                    newUsersAge, newUsersHeight, newUsersWeight);
+
+            // policy constructor that accepts the above variables as arguments
+            Policy myPolicy = new Policy(newPolicyNum, usersProvidersName, usersFirstName, usersLastName,
+                    usersSmokingStatus, newUsersAge, newUsersHeight, newUsersWeight);
+
+            // Add current policy object to the policy holder
+            policyHolder.addPolicy(myPolicy);
+
+            // Add current policy holder to the ArrayList
+            policyHolderList.add(policyHolder);
         }
-        
-        // Loop through ArrayList of Policy Objects
-        for(Policy myPolicy : policyList)
-        {
-           // output policyholder's information with formatting
-           System.out.println("\n");
-           System.out.println("Policy Number: " + myPolicy.policyNumber);
-           System.out.println("Provider Name: " + myPolicy.providerName);
-           System.out.println("Policyholder's First Name: " + myPolicy.firstName);
-           System.out.println("Policyholder's Last Name: " + myPolicy.lastName);
-           System.out.println("Policyholder's Age: " + myPolicy.age);
-           System.out.println("Policyholder's Smoking Status: " + myPolicy.smokerStatus);
-           System.out.println("Policyholder's Height: " + myPolicy.height);
-           System.out.println("Policyholder's Weight: " + myPolicy.weight);
-           System.out.printf("Policyholder's BMI: %.2f", myPolicy.calcBMI() );
-           System.out.printf("\nPolicy Price: $%.2f", myPolicy.calcPolicyPrice(myPolicy.calcBMI()) );
-        } 
+
+        // Loop through ArrayList of PolicyHolder Objects
+        for (PolicyHolder policyHolder : policyHolderList) {
+            // output policyholder's information with formatting
+            policyHolder.displayPolicies();
+        }
 
         // close the scanner
         fileInput.close();
