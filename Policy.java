@@ -35,6 +35,15 @@ public class Policy {
         this.height = height;
         this.weight = weight;
     }
+    
+    // toString method for Policy class
+    @Override
+    public String toString() {
+        return String.format("Policy Number: %d%nProvider Name: %s%nFirst Name: %s%nLast Name: %s%n" +
+                             "Smoker Status: %s%nAge: %d%nHeight: %d%nWeight: %d%n",
+                             policyNumber, providerName, firstName, lastName, smokerStatus, age, height, weight);
+    }
+
 
     /**
      * Method for calculating Policyholder's BMI
