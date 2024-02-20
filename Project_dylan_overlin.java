@@ -44,8 +44,6 @@ public class Project_dylan_overlin {
            int newUsersHeight = Integer.parseInt(usersHeight);
            int newUsersWeight = Integer.parseInt(usersWeight);
            int newUsersAge = Integer.parseInt(usersAge);
-<<<<<<< Updated upstream
-=======
            
            // Keep track of smokers and non-smokers
            if(usersSmokingStatus.equals("smoker"))
@@ -54,7 +52,6 @@ public class Project_dylan_overlin {
            } else {
                nonsmokers = nonsmokers + 1;
            }
->>>>>>> Stashed changes
 
            // policy constructor that accepts the above variables as arguments
            Policy myPolicy = new Policy(newPolicyNum, usersProvidersName, usersFirstName, usersLastName, 
